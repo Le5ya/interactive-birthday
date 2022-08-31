@@ -15,8 +15,8 @@ export const TextContextProvider = ({ children }) => {
 
 	`)
 	return (
-		<textContextProvider value={{text, setText}}>
+		<textContext.Provider value={{text, setText}}>
 			{children}
-		</textContextProvider>
+		</textContext.Provider>
 	)
 }
