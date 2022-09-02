@@ -1,11 +1,11 @@
 import { createContext, useState } from 'react';
-import { useHolidays } from '../hooks/useHolidays';
+//import { useHolidays } from '../hooks/useHolidays';
 
 export const holidaysContext = createContext({});
 
 export const HolidaysContextProvider = ({ children }) => {
 	const [holiday, setHoliday] = useState('');
-	const [holidays] = useHolidays();
+	//const [holidays] = useHolidays();
 
 	const changeHoliday = title => {
 		setHoliday(title);
@@ -13,7 +13,7 @@ export const HolidaysContextProvider = ({ children }) => {
 	}
 
 	return (
-		<holidaysContext.Provider value={{ holidays, holiday, changeHoliday }}>
+		<holidaysContext.Provider value={{  holiday, changeHoliday }}>
 			{children}
 		</holidaysContext.Provider>
 		

@@ -1,10 +1,13 @@
-import { useState, useContext } from 'react';
-import { holidaysContext } from '../../../context/holidaysContext';
+import { useState,} from 'react';
+//import { holidaysContext } from '../../../context/holidaysContext';
 import style from './Choices.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { setHoliday } from '../../../store/holidaySlice';
 
 const Choices = () => {
 	const [isOpenChoices, setIsOpenChoices] = useState(false);
-	const { holidays, holiday, changeHoliday } = useContext(holidaysContext);
+	const { holiday, holidays } = useSelector(state => state.holidays);
+	const dispatch = useDispatch();
 	
 	const toggleChoices = () => {
 		setIsOpenChoices(!isOpenChoices)
@@ -12,18 +15,17 @@ const Choices = () => {
 	
 	return (
 		<div className={style.wrapper}>
-			<button
-				className={style.button} onClick={toggleChoices}>
+			<button className={style.button} onClick={toggleChoices}>
 				{holidays[holiday] || 'Выбрать праздник'}
 			</button>
 			{isOpenChoices && (
 				<ul className={style.list}>
-					{Object.entries(holidays).map(item => (
+					{Object.entries(holidays).map((item) => (
 						<li
 							className={style.item} 
 							key={item[0]}
 							onClick={() => {
-								changeHoliday(item[0]);
+								dispatch(setHoliday(item[0]));
 								toggleChoices();
 							}}
 						>
