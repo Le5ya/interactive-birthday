@@ -1,11 +1,18 @@
-import { createContext, useState } from "react";
-export const imgContext = createContext('');
+import { createContext, useContext } from "react";
+import { useFetch } from '../hooks/useFetch'
+import { URI_API } from "../const/const";
+//import { useImg } from '../hooks/useImg';
+import { holidaysContext } from './holidaysContext';
+
+export const imgContext = createContext({});
 
 export const ImgContextProvider = ({ children }) => {
-	const [img, setImg] = useState('');
+	const {holiday} = useContext(holidaysContext);
+	//const { urlImg } = useImg(holiday);
+	const { urlImg } = useFetch(`${URI_API}image/${holiday}`);
 	
 	return (
-		<imgContext.Provider value={{img, setImg}}>
+		<imgContext.Provider value={{urlImg}}>
 			{children}
 		</imgContext.Provider>
 	)

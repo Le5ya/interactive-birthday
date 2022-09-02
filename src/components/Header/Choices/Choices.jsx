@@ -13,7 +13,8 @@ const Choices = () => {
 	return (
 		<div className={style.wrapper}>
 			<button
-				className={style.button} onClick={toggleChoices}>{holidays[holiday] || 'Выбрать праздник'}
+				className={style.button} onClick={toggleChoices}>
+				{holidays[holiday] || 'Выбрать праздник'}
 			</button>
 			{isOpenChoices && (
 				<ul className={style.list}>
