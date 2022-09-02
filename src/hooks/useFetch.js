@@ -18,7 +18,7 @@ export const useFetch = (url) => {
 			} catch (err) {
 				setError(err);
 			}
-		})()
+		}, [url])()
 	});
 	return [data, error];
 }

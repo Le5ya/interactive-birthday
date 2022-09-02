@@ -6,7 +6,7 @@ const Felicitation = () => {
 	const { text } = useContext(textContext);
 	return(
 		<p className={style.felicitation}>
-			{text}
+			{text ?? 'Повод поздравить'}
 
 	</p>
 )};
